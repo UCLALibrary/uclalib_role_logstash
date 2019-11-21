@@ -7,9 +7,18 @@ logstash_conf_dir: /etc/logstash
 
 inputs:
   syslog:
-    port: 31000
+    indextype:
+      port: 31000
+      grok: "test"
+    indextype2:
+      port: 31100
+      grok: "test2"
   beats:
-    port: 31100
+    indextype:
+      port: 32000
+    indextype2:
+      port: 32100
+
 
 outputs:
   elasticsearch:
