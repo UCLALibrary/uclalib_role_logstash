@@ -1,0 +1,15 @@
+---
+- name: start logstash
+  service:
+    name: logstash
+    state: started
+
+- name: restart logstash
+  service:
+    name: logstash
+    state: restarted
+
+- name: stop logstash
+  service:
+    name: logstash
+    state: stopped

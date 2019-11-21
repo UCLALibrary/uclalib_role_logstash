@@ -1,0 +1,26 @@
+---
+#- name: Upload Startup Option configuration
+#  template:
+#    src: "{{ inp0
+
+- name: Upload Logstash Configuration Inputs
+  template:
+    src: "input_{{ item.key }}.conf.j2"
+    dest: "{{ logstash_conf_dir }}/conf.d/10-input-{{ item.key }}.conf"
+    mode: 0664
+    owner: root
+    group: root
+  with_dict: "{{ inputs }}"
+  notify:
+    - restart logstash
+
+- name: Upload Logstash Configuration Outputs
+  template:
+    src: "output_{{ item.key }}.conf.j2"
+    dest: "{{ logstash_conf_dir }}/conf.d/20-output-{{ item.key }}.conf"
+    mode: 0664
+    owner: root
+    group: root
+  with_dict: "{{ outputs }}"
+  notify:
+    - restart logstash

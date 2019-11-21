@@ -1,0 +1,20 @@
+---
+java_opts: ""
+dependency_pkgs:
+  - java-1.8.0-openjdk
+
+logstash_conf_dir: /etc/logstash
+
+inputs:
+  syslog:
+    port: 31000
+  beats:
+    port: 31100
+
+outputs:
+  elasticsearch:
+    hosts:
+      - "http://localhost:9200"
+    credentials:
+      username: "elastic"
+      password: "changeme"

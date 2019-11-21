@@ -1,0 +1,9 @@
+input {
+  syslog {
+    port => "{{ inputs.syslog.port }}"
+    syslog_field => "syslog"
+{% if inputs.syslog.grok is defined %}
+    grok_pattern => "{{ inputs.syslog.grok }}"
+{% endif %}
+  }
+}
