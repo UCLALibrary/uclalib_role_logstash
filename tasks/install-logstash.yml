@@ -11,11 +11,13 @@
   yum:
     name: "{{ dependency_pkgs }}"
     state: present
+  disable_excludes: all
 
 - name: Install Logstash Package
   yum:
     name: logstash
     state: present
+  disable_excludes: all
 
 - name: Start Logstash on boot
   service:
