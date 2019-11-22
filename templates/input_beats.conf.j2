@@ -1,0 +1,8 @@
+input {
+{% for beatsType, beatsConfig in inputs.beats.items() %}
+  beats {
+    type => "{{ beatsType }}"
+    port => {{ beatsConfig.port }}
+  }
+{% endfor %}
+}

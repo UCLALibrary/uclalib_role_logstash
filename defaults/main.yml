@@ -1,0 +1,29 @@
+---
+java_opts: ""
+dependency_pkgs:
+  - java-1.8.0-openjdk
+
+logstash_conf_dir: /etc/logstash
+
+inputs:
+  syslog:
+    indextype:
+      port: 31000
+      grok: "test"
+    indextype2:
+      port: 31100
+      grok: "test2"
+  beats:
+    indextype:
+      port: 32000
+    indextype2:
+      port: 32100
+
+
+outputs:
+  elasticsearch:
+    hosts:
+      - "http://localhost:9200"
+    credentials:
+      username: "elastic"
+      password: "changeme"

@@ -1,0 +1,12 @@
+output {
+  elasticsearch {
+    hosts => ["{{ outputs.elasticsearch.hosts|join(",") }}"]
+{% if outputs.elasticsearch.index is defined %}
+    index => "{{ outputs.elasticsearch.index }}"
+{% endif %}
+{% if outputs.elasticsearch.credentials is defined %}
+    user => "{{ outputs.elasticsearch.credentials.username }}"
+    password => "{{ outputs.elasticsearch.credentials.password }}"
+{% endif %}
+  }
+}

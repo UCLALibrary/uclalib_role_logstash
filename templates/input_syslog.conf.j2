@@ -1,0 +1,12 @@
+input {
+{% for syslogType, syslogConfig in inputs.syslog.items() %}
+  syslog {
+    type => "{{ syslogType }}"
+    port => {{ syslogConfig.port }}
+    syslog_field => "syslog"
+{% if syslogConfig.grok is defined %}
+    grok_pattern => "{{ syslogConfig.grok }}"
+{% endif %}
+  }
+{% endfor %}
+}

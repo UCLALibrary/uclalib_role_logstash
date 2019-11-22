@@ -1,0 +1,6 @@
+---
+- name: Install Logstash
+  include_tasks: install-logstash.yml
+
+- name: Configure Logstash
+  include_tasks: configure-logstash.yml
